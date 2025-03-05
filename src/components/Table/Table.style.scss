@@ -1,0 +1,27 @@
+.table {
+  border-collapse: collapse;
+
+  &__header {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: 0.1px;
+    color: var(--clr-santa-gray);
+  }
+
+  &__header-cell {
+    padding-left: 12px;
+    padding-bottom: 13px;
+    width: 200px;
+    border-bottom: 1px solid var(--clr-santa-gray);
+    text-align: left;
+
+    &:nth-child(1) {
+      width: 110px;
+    }
+
+    &:nth-child(2) {
+      width: 757px;
+    }
+  }
+}
