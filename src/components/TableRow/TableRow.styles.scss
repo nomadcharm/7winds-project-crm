@@ -1,0 +1,57 @@
+.table {
+
+  &__body {
+    &>tr>td:nth-child(1) {
+      padding-left: 9px;
+    }
+  }
+
+  &__body-row {
+    cursor: pointer;
+  }
+
+  &__cell {
+    padding: 21px 12px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    letter-spacing: 0.1px;
+
+    &:has(input) {
+      padding: 12px;
+    }
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px;
+    width: 55px;
+    border-radius: 6px;
+    
+    &:hover {
+      background-color: var(--clr-ship-gray);
+    }
+
+    &:hover > .table__row-btn--delete {
+      display: block;
+    }
+  }
+
+  &__row-btn {
+
+    &--delete {
+      display: none;
+    }
+  }
+
+  &__row-input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid var(--clr-ship-gray);
+    border-radius: 6px;
+    color: var(--clr-santa-gray);
+    background-color: transparent;
+  }
+}
