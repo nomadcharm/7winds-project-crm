@@ -1,21 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL, eID } from "../constants";
-
-export interface RowData {
-  id: number;
-  rowName: string;
-  total: number;
-  salary: number;
-  mimExploitation: number;
-  machineOperatorSalary: number;
-  materials: number;
-  mainCosts: number;
-  supportCosts: number;
-  equipmentCosts: number;
-  overheads: number;
-  estimatedProfit: number;
-  child: RowData[];
-}
+import { RowData, RowRequestData, RowUpdateRequestData } from "./rowApi.types";
 
 export const rowApiSlice = createApi({
   reducerPath: 'rowApi',
@@ -27,14 +12,17 @@ export const rowApiSlice = createApi({
       query: () => `/v1/outlay-rows/entity/${eID}/row/list`,
     }),
     addRow: builder.mutation({
-      query: ({ data }) => ({
+      query: ({ parentId, newRow }: { parentId: number | null; newRow: RowRequestData }) => ({
         url: `/v1/outlay-rows/entity/${eID}/row/create`,
-        method: "POST",
-        body: data,
+        method: 'POST',
+        body: {
+          ...newRow,
+          parentId,
+        },
       }),
     }),
     editRow: builder.mutation({
-      query: ({ id, data }) => ({
+      query: ({id, data }: { id: number, data: RowUpdateRequestData }) => ({
         url: `/v1/outlay-rows/entity/${eID}/row/${id}/update`,
         method: "POST",
         body: data,

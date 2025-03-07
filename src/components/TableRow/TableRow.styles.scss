@@ -7,11 +7,12 @@
   }
 
   &__body-row {
+    border-bottom: 1px solid var(--clr-ship-gray);
     cursor: pointer;
   }
 
   &__cell {
-    padding: 21px 12px;
+    padding: 18px 12px;
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
@@ -23,6 +24,7 @@
   }
 
   &__btn-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 6px;

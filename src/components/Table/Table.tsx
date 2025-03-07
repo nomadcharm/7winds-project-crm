@@ -3,7 +3,7 @@ import TableRow from '../TableRow';
 import './Table.style.scss';
 
 const Table = () => {
-  const { data: rows, refetch  } = useGetRowsQuery();
+  const { data: rows, refetch } = useGetRowsQuery();
 
   const handleUpdate = () => {
     refetch();
@@ -23,17 +23,20 @@ const Table = () => {
           </tr>
         </thead>
         <tbody className="table__body">
-          {rows && rows.map((row) => (
-            <TableRow
-              key={row.id}
-              row={row}
-              onUpdate={handleUpdate}
-            />
-          ))}
+          {rows && rows.map((row) => {
+            return (
+              <TableRow
+                key={row.id}
+                row={row}
+                depth={0}
+                onUpdate={handleUpdate}
+              />
+            );
+          })}
         </tbody>
       </table>
     </>
   )
 }
 
-export default Table
+export default Table;
